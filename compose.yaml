@@ -1,0 +1,21 @@
+services:
+  app:
+    image: al7er/todopg
+    ports:
+      - 3000:3000
+    working_dir: /app
+    environment:
+      PGHOST: postgres
+      PGUSER: postgres
+      PGDATABASE: todos
+
+  postgres:
+    image: postgres
+    volumes:
+      - hw2_postgres_compose:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: todos
+
+volumes:
+  hw2_postgres_compose:
